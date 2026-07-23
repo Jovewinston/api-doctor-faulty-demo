@@ -1,0 +1,10 @@
+{
+  "name": "api-doctor-faulty-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tiny intentional footgun repo to trigger api-doctor (resend-api-key-hardcoded).",
+  "type": "module",
+  "dependencies": {
+    "resend": "^4.0.0"
+  }
+}
