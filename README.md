@@ -1,21 +1,12 @@
 # api-doctor-faulty-demo
 
-Tiny intentional broken sample for **Qualty API Doctor**.
+Tiny sample for **Qualty API Doctor**.
 
-## What it breaks
+- `main` — clean Resend usage (`process.env.RESEND_API_KEY`)
+- branch `demo/hardcoded-resend-key` — intentional footgun for PR scans
 
-Rule: `resend-api-key-hardcoded` (severity: error)
+## PR test
 
-File: `src/send-email.ts` hardcodes a fake Resend API key (`re_…`) in the client constructor.
-
-## Local check
-
-```bash
-npx @api-doctor/cli@latest . --no-telemetry
-```
-
-## PR test with API Doctor App
-
-1. Install **Qualty API Doctor** GitHub App on this repo.
-2. Open a PR that includes `src/send-email.ts`.
-3. Expect a failing/erroring API Doctor check + findings comment.
+1. Install **Qualty API Doctor** on this repo.
+2. Open a PR from `demo/hardcoded-resend-key` → `main`.
+3. Expect API Doctor to flag `resend/security/api-key-hardcoded`.
