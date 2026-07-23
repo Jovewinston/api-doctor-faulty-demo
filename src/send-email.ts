@@ -1,11 +1,10 @@
 import { Resend } from 'resend';
 
-// INTENTIONAL FOOTGUN for api-doctor rule: resend-api-key-hardcoded
-// Do not use this pattern in real apps — use env vars instead.
-const resend = new Resend('re_123456789_AbCdEfGhIjKlMnOp');
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function sendWelcomeEmail(to: string) {
   await resend.emails.send({
+    idempotencyKey: `welcome/${to}`,
     from: 'Demo <onboarding@example.com>',
     to: [to],
     subject: 'Welcome',
